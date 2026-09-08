@@ -1,0 +1,25 @@
+{
+  "name": "seen-it",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Seen It!: a Letterboxd-powered movie guessing party game",
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n server,client -c red,yellow \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w client && npm run build -w server",
+    "start": "node server/dist/server/src/index.js",
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w client",
+    "preview": "tsx server/src/tools/preview.ts"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
